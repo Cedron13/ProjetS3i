@@ -1,10 +1,7 @@
 
 package ca.usherbrooke.gegi.server.presentation;
 
-        import ca.usherbrooke.gegi.server.business.Groupe;
-        import ca.usherbrooke.gegi.server.business.Local;
-        import ca.usherbrooke.gegi.server.business.Place;
-        import ca.usherbrooke.gegi.server.business.Etudiant;
+        import ca.usherbrooke.gegi.server.business.*;
         import ca.usherbrooke.gegi.server.persistence.PlaceMapper;
 
         import javax.inject.Inject;
@@ -18,6 +15,7 @@ package ca.usherbrooke.gegi.server.presentation;
         import javax.ws.rs.core.GenericType;
         import javax.ws.rs.core.MediaType;
         import javax.ws.rs.core.Response;
+        import java.util.ArrayList;
         import java.util.List;
 
 @Path("")
@@ -32,44 +30,49 @@ public class PlaceService {
     @GET
     @Path("local")
     @Produces("application/json")
-    public Local getLocal(@QueryParam("localid") String localId) {
+    public List<ResultPlace> getLocal(@QueryParam("localid") String localId) {
         System.out.println(localId);
         List<Place> lesPlaces =placeMapper.selectLocal(localId);
         for(int i=0;i<lesPlaces.size();i++){
             lesPlaces.get(i).setPlacesProches(placeMapper.selectPlacesProches(localId, lesPlaces.get(i).getPlaceNumber()));
         }
-        Local local = new Local();
+        Local local = new Local(localId);
         local.setLesPlaces(lesPlaces);
-        return local;
+        //------------------------------------------------------------------------------
+        Groupe A20 = new Groupe();
+        List<Etudiant> lesEtudiants = new ArrayList<Etudiant>();
+
+        Etudiant a = new Etudiant("a");
+        a.setName("Bob");
+        Etudiant b = new Etudiant("b");
+        b.setName("Renault");
+        Etudiant c = new Etudiant("c");
+        c.setName("Pierre");
+        Etudiant d = new Etudiant("d");
+        d.setName("Francois");
+        Etudiant e = new Etudiant("e");
+        e.setName("Alexandre");
+        Etudiant f = new Etudiant("f");
+        f.setName("Tristan");
+        Etudiant g = new Etudiant("g");
+        g.setName("Roger");
+
+        lesEtudiants.add(a);
+        lesEtudiants.add(b);
+        lesEtudiants.add(c);
+        lesEtudiants.add(d);
+        lesEtudiants.add(e);
+        lesEtudiants.add(f);
+        lesEtudiants.add(g);
+
+        A20.setLesEtudiants(lesEtudiants);
+        //------------------------------------------------------------------------------
+        local.assignePlaces(A20);
+        return local.toResultPlaces();
     }
-   // public List<Groupe> getGroupes(@QueryParam("localid") String localId)
-   /*
-
-         select * from public.placesproches, public.places
-    Where
-    public.places.PlaceNumber = public.placesproches.placenumber
-    AND
-    public.places.LocalId = public.placesproches.localid_1
-    AND
-    public.places.LocalId = #{localId}
 
 
-  <resultMap id="MapPlaces" type = "Place">
-      <id property="nomPlace" column="placenumber"/>
-      <result property="local" column= "localid"/>
-      <result property="pastilleCouleur" column= "pastille_couleur"/>
-      <collection property="placesProches" ofType="Place">
-              <result property="nomPlace" column="placesprochesplacenumber"/>
-      </collection>
-  </resultMap>
-
-
-
-
-
-
-
-
+/*
    @Produces("text/plain")
       public String getEtudiant(@QueryParam("id") Integer id) {
         System.out.println(httpServletRequest.getUserPrincipal().getName());

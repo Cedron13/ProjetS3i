@@ -29,7 +29,7 @@ public static void main(String[]args){
 
     A20.setLesEtudiants(lesEtudiants);
 
-    Local local = new Local();
+    Local local = new Local("C1-5001");
     Place a1 = new Place(1, "");
     Place a2 = new Place(2, "");
     Place a3 = new Place(3, "");

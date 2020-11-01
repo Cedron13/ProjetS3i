@@ -3,28 +3,20 @@ package ca.usherbrooke.gegi.server.business;
 import java.util.List;
 
 public class Place {
+
     private int PlaceNumber;
     private String Pastille_Couleur;
     private boolean isAssigner;
-    private Etudiant etudiant;
+    private String EtudiantName;
+    private String CIP;
     private List<Place> placesProches;
 
-    public Place(int nom){
-        PlaceNumber = nom;
-        etudiant = new Etudiant("");
-        Pastille_Couleur = "White";
-    }
-    public Place(int nom, String couleur){
-        PlaceNumber = nom;
-        etudiant = new Etudiant("");
-        Pastille_Couleur = couleur;
-    }
     public int getPlaceNumber() {
         return PlaceNumber;
     }
 
     public void setPlaceNumber(int placeNumber) {
-        this.PlaceNumber = placeNumber;
+        PlaceNumber = placeNumber;
     }
 
     public boolean isAssigner() {
@@ -35,12 +27,46 @@ public class Place {
         isAssigner = assigner;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+
+    public String getPastille_Couleur() {
+        return Pastille_Couleur;
     }
 
+    public void setPastille_Couleur(String pastille_Couleur) {
+        Pastille_Couleur = pastille_Couleur;
+    }
+
+    public String getEtudiantName() {
+        return EtudiantName;
+    }
+
+    public void setEtudiantName(String etudiantName) {
+        EtudiantName = etudiantName;
+    }
+
+    public String getCIP() {
+        return CIP;
+    }
+
+    public void setCIP(String CIP) {
+        this.CIP = CIP;
+    }
+
+
+
+    public Place(int nom){
+        PlaceNumber = nom;
+        Pastille_Couleur = "White";
+    }
+    public Place(int nom, String couleur){
+        PlaceNumber = nom;
+        Pastille_Couleur = couleur;
+    }
+
+
     public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+        this.CIP = etudiant.getCip();
+        this.EtudiantName = etudiant.getName();
     }
 
     public List<Place> getPlacesProches() {

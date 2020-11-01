@@ -1,18 +1,24 @@
 package ca.usherbrooke.gegi.server.business;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class Local {
     private String LocalId;
+    private List<Place> lesPlaces;
+
+    public Local(String id){
+        this.LocalId = id;
+    }
+
     public List<Place> getLesPlaces() {
         return lesPlaces;
     }
-
     public void setLesPlaces(List<Place> lesPlaces) {
         this.lesPlaces = lesPlaces;
     }
-
-    private List<Place> lesPlaces;
 
     public String getLocalId() {
         return LocalId;
@@ -20,6 +26,13 @@ public class Local {
 
     public void setLocalId(String localId) {
         LocalId = localId;
+    }
+    public List<ResultPlace> toResultPlaces(){
+        List<ResultPlace> formatPlaces = new ArrayList<ResultPlace>();
+        for(int i=0; i<this.lesPlaces.size();i++){
+            formatPlaces.add(new ResultPlace(lesPlaces.get(i).getPlaceNumber(),lesPlaces.get(i).getCIP(), lesPlaces.get(i).getEtudiantName()));
+        }
+        return formatPlaces;
     }
 
     public boolean assignePlaces(Groupe groupe){
@@ -58,16 +71,5 @@ public class Local {
             }
         }
         return true;
-    }
-    public String toString(){
-        String s = "";
-        for(int i=0;i<this.lesPlaces.size();i++){
-            if(this.lesPlaces.get(i).getEtudiant().getCip().isEmpty())
-                s = s+ "\n" + this.lesPlaces.get(i).getPlaceNumber() + "\t" + "seat empty";
-
-            else
-                s = s+ "\n" + this.lesPlaces.get(i).getPlaceNumber() + "\t" + this.lesPlaces.get(i).getEtudiant().getCip();
-        }
-        return s;
     }
 }

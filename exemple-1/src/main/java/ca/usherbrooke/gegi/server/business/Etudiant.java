@@ -5,6 +5,7 @@ public class Etudiant {
     private Integer etudiant_app_id;
 
     private String cip;
+    private String name;
     private String courriel;
     private String programme;
     private String programme_nom;
@@ -14,6 +15,17 @@ public class Etudiant {
     private String departemen;
     private String faculte;
     private String universite;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 
     public Etudiant(String n){
         cip = n;

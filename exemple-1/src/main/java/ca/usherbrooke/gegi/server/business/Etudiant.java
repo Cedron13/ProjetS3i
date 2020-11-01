@@ -3,6 +3,7 @@ package ca.usherbrooke.gegi.server.business;
 
 public class Etudiant {
     private Integer etudiant_app_id;
+
     private String cip;
     private String courriel;
     private String programme;
@@ -13,6 +14,11 @@ public class Etudiant {
     private String departemen;
     private String faculte;
     private String universite;
+
+    public Etudiant(String n){
+        cip = n;
+
+    }
 
     public Integer getEtudiant_app_id() {
         return etudiant_app_id;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ca.usherbrooke.gegi.server.persistence.PlaceMapper">
+
+    <select id="selectLocal" resultType="Place">
+select placenumber, Pastille_Couleur from public.places where localid = #{localid}
+
+
+    </select>
+
+    <select id="selectPlacesProches" resultType="Place">
+select placesprochesplacenumber from public.placesproches where localid_1 = #{localid} AND placenumber = #{placeid}
+
+
+    </select>
+
+
+</mapper>

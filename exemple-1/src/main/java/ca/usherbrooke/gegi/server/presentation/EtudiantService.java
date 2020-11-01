@@ -1,6 +1,6 @@
+/*
 package ca.usherbrooke.gegi.server.presentation;
 
-import ca.usherbrooke.gegi.server.business.Trimestre;
 import ca.usherbrooke.gegi.server.persistence.EtudiantMapper;
 import ca.usherbrooke.gegi.server.business.Etudiant;
 
@@ -43,7 +43,7 @@ public class EtudiantService {
         return etudiants.get(0).toString();
     }*/
 
-
+    /*
     @GET
     @Path("insert_trimestre")
     public void insertTrimestre() {
@@ -62,3 +62,4 @@ public class EtudiantService {
 
     }
 }
+*/

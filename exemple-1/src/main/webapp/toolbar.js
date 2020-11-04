@@ -17,7 +17,7 @@ export const toolbar = new class Toolbar {
             height: 40, elements: [
                 {
                     view: "icon",
-                    icon: "mdi mdi-settings",
+                    icon: "mdi mdi-menu",
                     id: 'settings',
                     hidden: false,
                     tooltip: "Configuration",

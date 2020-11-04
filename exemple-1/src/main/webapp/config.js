@@ -86,6 +86,24 @@ export const config = new class Config {
                                     inputAlign: "right",
                                     inputWidth: 450,
                                 },
+                                {
+                                    view: "hourpicker",
+                                    id: "fin",
+                                    label: "Heure de début",
+                                    name: "fin",
+                                    labelWidth: 280,
+                                    inputAlign: "right",
+                                    inputWidth: 450,
+                                },
+                                {
+                                    view: "hourpicker",
+                                    id: "fin",
+                                    label: "Heure de fin",
+                                    name: "fin",
+                                    labelWidth: 280,
+                                    inputAlign: "right",
+                                    inputWidth: 450,
+                                },
 
 
                                 {

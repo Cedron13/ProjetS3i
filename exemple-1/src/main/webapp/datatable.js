@@ -49,14 +49,14 @@ export const datatable = new class Datatable {
                 $$("main").hideProgress();
 
             })
-            .catch((reason) => {
+           /* .catch((reason) => {
                 console.error(reason);
                 webix.modalbox({
                     title: 'Voir des trimestres',
                     text: "Paramètres inconsistants pour accéder à la base de données de présence",
                     type: 'alert-error',
                 });
-            });
+            }); */
     }
 
 }

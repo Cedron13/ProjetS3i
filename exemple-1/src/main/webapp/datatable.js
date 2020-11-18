@@ -1,6 +1,4 @@
 
-
-
 export const datatable = new class Datatable {
 
     get id(){
@@ -17,13 +15,14 @@ export const datatable = new class Datatable {
         columns: [
         {
             id: "placenumber",
-            header: "id",
-            width: 75,
+            header: "Numero de place",
+            width: 300,
             tooltip: "Place Id",
             hidden: false,
         },
         {
-            id: "etudiantname", header: "Name",
+            id: "etudiantname",
+            header: "Nom des étudiants",
             hidden: false,
             width: 200,
             fillspace: true,

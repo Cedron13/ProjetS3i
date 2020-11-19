@@ -17,7 +17,7 @@ export const toolbar = new class Toolbar {
             height: 40, elements: [
                 {
                     view: "icon",
-                    icon: "mdi mdi-settings",
+                    icon: "mdi mdi-menu",
                     id: 'settings',
                     hidden: false,
                     tooltip: "Configuration",
@@ -30,8 +30,9 @@ export const toolbar = new class Toolbar {
                     view: "label",
                     id: 'message',
                     hidden: false,
-                    label: `<span style="font-size: 150%" >Trimestre</span>`,
-                    width: 200,
+                    label: `<span style="font-size: 180%" >Service d'assignation des places d'examen</span>`,
+                    align: "center",
+                    width: 800,
                 },
                 {},
                 {

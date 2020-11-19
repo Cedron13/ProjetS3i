@@ -33,7 +33,8 @@ public class PlaceService {
     public List<ResultPlace> getLocal(@QueryParam("localid") String localId, @QueryParam("etudiants") String etudiants, @QueryParam("disposition") int dis) {
         List<Place> lesPlaces =placeMapper.selectLocal(localId);
         for(int i=0;i<lesPlaces.size();i++){
-            lesPlaces.get(i).setPlacesProches(placeMapper.selectPlacesProches(localId, lesPlaces.get(i).getPlaceNumber(), dis));
+            List<Place> placesTest= placeMapper.selectPlacesProches(localId, lesPlaces.get(i).getPlaceNumber(), dis);
+            lesPlaces.get(i).setPlacesProches(placesTest);
         }
         Local local = new Local(localId);
         local.setLesPlaces(lesPlaces);

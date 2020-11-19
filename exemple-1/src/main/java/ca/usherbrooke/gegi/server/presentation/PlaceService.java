@@ -30,44 +30,26 @@ public class PlaceService {
     @GET
     @Path("local")
     @Produces("application/json")
-    public List<ResultPlace> getLocal(@QueryParam("localid") String localId) {
-        System.out.println(localId);
+    public List<ResultPlace> getLocal(@QueryParam("localid") String localId, @QueryParam("etudiants") String etudiants, @QueryParam("disposition") int dis) {
         List<Place> lesPlaces =placeMapper.selectLocal(localId);
         for(int i=0;i<lesPlaces.size();i++){
-            lesPlaces.get(i).setPlacesProches(placeMapper.selectPlacesProches(localId, lesPlaces.get(i).getPlaceNumber()));
+            lesPlaces.get(i).setPlacesProches(placeMapper.selectPlacesProches(localId, lesPlaces.get(i).getPlaceNumber(), dis));
         }
         Local local = new Local(localId);
         local.setLesPlaces(lesPlaces);
         //------------------------------------------------------------------------------
-        Groupe A20 = new Groupe();
+        Groupe leGroupe = new Groupe();
         List<Etudiant> lesEtudiants = new ArrayList<Etudiant>();
+        String[] arrayEtudiant = etudiants.split(";");
 
-        Etudiant a = new Etudiant("a");
-        a.setNom("Bob");
-        Etudiant b = new Etudiant("b");
-        b.setNom("Renault");
-        Etudiant c = new Etudiant("c");
-        c.setNom("Pierre");
-        Etudiant d = new Etudiant("d");
-        d.setNom("Francois");
-        Etudiant e = new Etudiant("e");
-        e.setNom("Alexandre");
-        Etudiant f = new Etudiant("f");
-        f.setNom("Tristan");
-        Etudiant g = new Etudiant("g");
-        g.setNom("Roger");
+        for(int x=0;x<arrayEtudiant.length;x++){
+            lesEtudiants.add(new Etudiant(arrayEtudiant[x]));
+        }
 
-        lesEtudiants.add(a);
-        lesEtudiants.add(b);
-        lesEtudiants.add(c);
-        lesEtudiants.add(d);
-        lesEtudiants.add(e);
-        lesEtudiants.add(f);
-        lesEtudiants.add(g);
 
-        A20.setLesEtudiants(lesEtudiants);
+        leGroupe.setLesEtudiants(lesEtudiants);
         //------------------------------------------------------------------------------
-        local.assignePlaces(A20);
+        local.assignePlaces(leGroupe);
         return local.toResultPlaces();
     }
     @GET
@@ -113,3 +95,26 @@ public class PlaceService {
 
     } */
 }
+        /*
+        Etudiant a = new Etudiant("a");
+        a.setNom("Bob");
+        Etudiant b = new Etudiant("b");
+        b.setNom("Renault");
+        Etudiant c = new Etudiant("c");
+        c.setNom("Pierre");
+        Etudiant d = new Etudiant("d");
+        d.setNom("Francois");
+        Etudiant e = new Etudiant("e");
+        e.setNom("Alexandre");
+        Etudiant f = new Etudiant("f");
+        f.setNom("Tristan");
+        Etudiant g = new Etudiant("g");
+        g.setNom("Roger");
+
+        lesEtudiants.add(a);
+        lesEtudiants.add(b);
+        lesEtudiants.add(c);
+        lesEtudiants.add(d);
+        lesEtudiants.add(e);
+        lesEtudiants.add(f);
+        lesEtudiants.add(g);*/

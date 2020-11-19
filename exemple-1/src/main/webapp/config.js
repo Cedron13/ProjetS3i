@@ -79,6 +79,14 @@ export const config = new class Config {
                                     labelWidth: 280,
                                     inputWidth: 500,
                                 },
+                                {
+                                    view: "text",
+                                    id: "etudiants",
+                                    name: "etudiants",
+                                    label: "Liste d'etudiant a placer",
+                                    labelWidth: 280,
+                                    inputWidth: 500,
+                                },
                             /*
                                 {
                                     view: "datepicker",
@@ -133,16 +141,18 @@ export const config = new class Config {
                                             icon: "mdi  mdi-48px mdi-content-save-settings-outline",
                                             disabled: true,  //c'est la raison pour laquelle  c'est grisé
                                             click: () => {
-                                                const trimestre = {
+                                                const requestInfo = {
                                                     local: $$("local").getValue(),
                                                     groupe: $$("groupe").getValue(),
                                                    // batimentID: $$("id_batiment").getValue(),
                                                    // date: $$("date").getValue(),
-                                                    dispostion: $$("dispostion").getValue(),
+                                                    dispostion: $$("disposition").getValue(),
+                                                    lesEtudiants: $$("etudiants").getValue(),
                                                    // heure_debut: $$("heure_debut").getValue(),
                                                    // heure_fin: $$("heure_fin").getValue(),
                                             };
-                                                this.insertTrimestre(trimestre);
+                                                this.loadNewPlaces(requestInfo);
+
                                             }
                                         }]
                                 }
@@ -162,26 +172,20 @@ export const config = new class Config {
         }
     }
 
-    async insertTrimestre(trimestre) {
+    async loadNewPlaces(requestInfo) {
         $$("main").showProgress({type: 'top'});
-        webix
-            .ajax()
+        return webix.ajax()
             .headers({"Content-Type": "application/json"})
-            .put("api/insert_trimestre", JSON.stringify(trimestre))
-            .then(async data => {
-                webix.message({type: "success", text: "Trimestre inséré"});
-                webix.ui(datatable.configuration, $$(datatable.id));
-                await datatable.loadPlaces();
-                $$(this.id).close();
+            .get("api/local?localid="+requestInfo.local+"&etudiants="+requestInfo.lesEtudiants+"&disposition="+requestInfo.dispostion)
+            .then(data => data.json())
+            .then(data => {
+                console.log(data);
+                $$(datatable.id).clearAll();
+                $$(datatable.id).parse(data);
                 $$("main").hideProgress();
-            })
-            .catch((reason) => {
-                webix.alert({
-                    text: "erreur lors de la sauvegarde d'un trimestre."
-                })
-            });
-    }
 
+            })
+    }
     show() {
         $$("apply").disable();
         $$("config").show();

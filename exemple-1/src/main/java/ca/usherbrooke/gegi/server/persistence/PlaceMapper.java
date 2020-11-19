@@ -11,6 +11,6 @@ import java.util.List;
 @Mapper
 public interface PlaceMapper {
     List<Place> selectLocal(@Param("localid") String localId);
-    List<Place> selectPlacesProches(@Param("localid") String localId, @Param("placeid") int placeId);
+    List<Place> selectPlacesProches(@Param("localid") String localId, @Param("placeid") int placeId, @Param("disposition") int disposition);
 
 }

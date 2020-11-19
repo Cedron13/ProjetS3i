@@ -39,7 +39,7 @@ export const datatable = new class Datatable {
         $$("main").showProgress({type: 'top'});
         return webix.ajax()
             .headers({"Content-Type": "application/json"})
-            .get("api/local?localid=C1-5001")
+            .get("api/local?localid=C1-5001&etudiants=bob;roger;rafael&disposition=1")
             .then(data => data.json())
             .then(data => {
                 console.log(data);

@@ -11,7 +11,7 @@ select placenumber, Pastille_Couleur from public.places where localid = #{locali
     </select>
 
     <select id="selectPlacesProches" resultType="Place">
-select placesprochesplacenumber from public.placesproches where localid_1 = #{localid} AND placenumber = #{placeid}
+select placesprochesplacenumber from public.placesproches where localid_1 = #{localid} AND placenumber = #{placeid} AND #{disposition} >= distance
 
 
     </select>

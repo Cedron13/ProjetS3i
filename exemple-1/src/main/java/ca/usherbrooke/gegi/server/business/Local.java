@@ -1,6 +1,8 @@
 package ca.usherbrooke.gegi.server.business;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -40,6 +42,7 @@ public class Local {
         int nbrEtudiant = groupe.getLesEtudiants().size();
         int etudiantAssigne =0;
         int indexPlaces = 0;
+        Collections.shuffle(groupe.getLesEtudiants());
 
         while(etudiantAssigne < nbrEtudiant){
 

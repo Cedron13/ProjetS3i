@@ -1,75 +1,41 @@
 package ca.usherbrooke.gegi.server.business;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Etudiant {
+
+    private String app;
+    private String cip;
+    private String departement;
+    private List<String> groupes;
+    private String dateInscription;
+    private String nom;
+    private String prenom;
+    private String profilId;
+    private String programme;
+    private String trimestreId;
+    private String uniteId;
     private Integer etudiant_app_id;
 
-    private String cip;
-    private String name;
-    private String courriel;
-    private String programme;
-    private String programme_nom;
-    private String app;
-    private String app_titre;
-    private String ap;
-    private String departemen;
-    private String faculte;
-    private String universite;
-
-
-    public String getName() {
-        return name;
+    public Etudiant(int app, String cip, String departement, ArrayList<String> groupes, String dateInscription, String nom, String prenom, String profilId, String programme, String trimestreId, String uniteId) {
+        //this.app = app;
+        this.cip = cip;
+        this.departement = departement;
+        this.groupes = groupes;
+        this.dateInscription = dateInscription;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.profilId = profilId;
+        this.programme = programme;
+        this.trimestreId = trimestreId;
+        this.uniteId = uniteId;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
 
     public Etudiant(String n){
         cip = n;
 
-    }
-
-    public Integer getEtudiant_app_id() {
-        return etudiant_app_id;
-    }
-
-    public void setEtudiant_app_id(Integer etudiant_app_id) {
-        this.etudiant_app_id = etudiant_app_id;
-    }
-
-    public String getCip() {
-        return cip;
-    }
-
-    public void setCip(String cip) {
-        this.cip = cip;
-    }
-
-    public String getCourriel() {
-        return courriel;
-    }
-
-    public void setCourriel(String courriel) {
-        this.courriel = courriel;
-    }
-
-    public String getProgramme() {
-        return programme;
-    }
-
-    public void setProgramme(String programme) {
-        this.programme = programme;
-    }
-
-    public String getProgramme_nom() {
-        return programme_nom;
-    }
-
-    public void setProgramme_nom(String programme_nom) {
-        this.programme_nom = programme_nom;
     }
 
     public String getApp() {
@@ -80,60 +46,109 @@ public class Etudiant {
         this.app = app;
     }
 
-    public String getApp_titre() {
-        return app_titre;
+    public String getCip() {
+        return cip;
     }
 
-    public void setApp_titre(String app_titre) {
-        this.app_titre = app_titre;
+    public void setCip(String cip) {
+        this.cip = cip;
     }
 
-    public String getAp() {
-        return ap;
+    public String getDepartement() {
+        return departement;
     }
 
-    public void setAp(String ap) {
-        this.ap = ap;
+    public void setDepartement(String departement) {
+        this.departement = departement;
     }
 
-    public String getDepartemen() {
-        return departemen;
+    public List<String> getGroupes() {
+        return groupes;
     }
 
-    public void setDepartemen(String departemen) {
-        this.departemen = departemen;
+    public void setGroupes(List<String> groupes) {
+        this.groupes = groupes;
     }
 
-    public String getFaculte() {
-        return faculte;
+    public String getDateInscription() {
+        return dateInscription;
     }
 
-    public void setFaculte(String faculte) {
-        this.faculte = faculte;
+    public void setDateInscription(String dateInscription) {
+        this.dateInscription = dateInscription;
     }
 
-    public String getUniversite() {
-        return universite;
+    public String getNom() {
+        return nom;
     }
 
-    public void setUniversite(String universite) {
-        this.universite = universite;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getProfilId() {
+        return profilId;
+    }
+
+    public void setProfilId(String profilId) {
+        this.profilId = profilId;
+    }
+
+    public String getProgramme() {
+        return programme;
+    }
+
+    public void setProgramme(String programme) {
+        this.programme = programme;
+    }
+
+    public String getTrimestreId() {
+        return trimestreId;
+    }
+
+    public void setTrimestreId(String trimestreId) {
+        this.trimestreId = trimestreId;
+    }
+
+    public String getUniteId() {
+        return uniteId;
+    }
+
+    public void setUniteId(String uniteId) {
+        this.uniteId = uniteId;
+    }
+
+    public Integer getEtudiant_app_id() {
+        return etudiant_app_id;
+    }
+
+    public void setEtudiant_app_id(Integer etudiant_app_id) {
+        this.etudiant_app_id = etudiant_app_id;
     }
 
     @Override
     public String toString() {
         return "Etudiant{" +
-                "etudiant_app_id=" + etudiant_app_id +
+                "app='" + app + '\'' +
                 ", cip='" + cip + '\'' +
-                ", courriel='" + courriel + '\'' +
+                ", departement='" + departement + '\'' +
+                ", groupes='" + groupes + '\'' +
+                ", dateInscription='" + dateInscription + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", profilId='" + profilId + '\'' +
                 ", programme='" + programme + '\'' +
-                ", programme_nom='" + programme_nom + '\'' +
-                ", app='" + app + '\'' +
-                ", app_titre='" + app_titre + '\'' +
-                ", ap='" + ap + '\'' +
-                ", departemen='" + departemen + '\'' +
-                ", faculte='" + faculte + '\'' +
-                ", universite='" + universite + '\'' +
+                ", trimestreId='" + trimestreId + '\'' +
+                ", uniteId='" + uniteId + '\'' +
+                ", etudiant_app_id=" + etudiant_app_id +
                 '}';
     }
 }

@@ -66,7 +66,7 @@ public class Place {
 
     public void setEtudiant(Etudiant etudiant) {
         this.CIP = etudiant.getCip();
-        this.EtudiantName = etudiant.getName();
+        this.EtudiantName = etudiant.getNom();
     }
 
     public List<Place> getPlacesProches() {

@@ -34,7 +34,7 @@ export const config = new class Config {
                                     view: "popup",
                                     dynamic: true,
                                     head: false,
-                                    body: {view: "template", width: 500, height: 300, src: "help.html"}
+                                    body: {view: "template", width: 500, height: 300, src: "help2.html"}
                                 }).show(node);
                             }
                         }
@@ -43,7 +43,8 @@ export const config = new class Config {
                     {
                         view: "fieldset",
                         label: "configuration",
-                        width: 600,
+                        width: 700,
+                        height: 300,
                         body: {
                             view: "form",
                             margin: 0,
@@ -54,40 +55,63 @@ export const config = new class Config {
                             elements: [
                                 {
                                     view: "text",
-                                    id: "id",
-                                    name: "trimestre",
-                                    label: "id du trimestre",
+                                    id: "groupe",
+                                    name: "groupe",
+                                    label: "Groupe choisi",
                                     labelWidth: 280,
                                     inputWidth: 375,
                                 },
+
                                 {
                                     view: "text",
-                                    id: "nom",
-                                    name: "trimestre",
-                                    label: "nom du trimestre",
+                                    id: "local",
+                                    name: "local",
+                                    label: "numero du local",
                                     labelWidth: 280,
                                     inputWidth: 500,
                                 },
+
                                 {
-                                    view: "datepicker",
-                                    id: "debut",
-                                    name: "début",
-                                    label:" Date de début du trimestre",
+                                    view: "text",
+                                    id: "disposition",
+                                    name: "disposition",
+                                    label: "Type de disposition (covid,2m ou mixte)",
                                     labelWidth: 280,
-                                    inputAlign: "right",
-                                    inputWidth: 450,
+                                    inputWidth: 500,
                                 },
+                            /*
                                 {
                                     view: "datepicker",
-                                    id: "fin",
-                                    label: "Date de fin du trimestre",
-                                    name: "fin",
+                                    id: "date",
+                                    name: "date",
+                                    label:" Date de reservation",
                                     labelWidth: 280,
                                     inputAlign: "right",
                                     inputWidth: 450,
                                 },
 
+                               {
+                                    view: "datepicker",
+                                   type: "time",
+                                    id : "heure_debut",
+                                    name : "heure_debut",
+                                    width: 350,
+                                   labelWidth: 280,
+                                   inputWidth: 450,
+                                   label: "Heure de debut de reservation",
+                                },
 
+                                {
+                                    view: "datepicker",
+                                    type: "time",
+                                    id : "heure_fin",
+                                    name : "heure_fin",
+                                    width: 350,
+                                    labelWidth: 280,
+                                    inputWidth: 450,
+                                    label: "Heure de fin de reservation",
+                                },
+                            */
                                 {
                                     container: "button",
                                     padding: 20,
@@ -110,11 +134,14 @@ export const config = new class Config {
                                             disabled: true,  //c'est la raison pour laquelle  c'est grisé
                                             click: () => {
                                                 const trimestre = {
-                                                    trimestreId: $$("id").getValue(),
-                                                    trimestre: $$("nom").getValue(),
-                                                    debut: $$("debut").getValue(),
-                                                    fin: $$("fin").getValue(),
-                                                };
+                                                    local: $$("local").getValue(),
+                                                    groupe: $$("groupe").getValue(),
+                                                   // batimentID: $$("id_batiment").getValue(),
+                                                   // date: $$("date").getValue(),
+                                                    dispostion: $$("dispostion").getValue(),
+                                                   // heure_debut: $$("heure_debut").getValue(),
+                                                   // heure_fin: $$("heure_fin").getValue(),
+                                            };
                                                 this.insertTrimestre(trimestre);
                                             }
                                         }]

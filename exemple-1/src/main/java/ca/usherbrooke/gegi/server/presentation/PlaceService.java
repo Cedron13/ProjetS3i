@@ -43,19 +43,19 @@ public class PlaceService {
         List<Etudiant> lesEtudiants = new ArrayList<Etudiant>();
 
         Etudiant a = new Etudiant("a");
-        a.setName("Bob");
+        a.setNom("Bob");
         Etudiant b = new Etudiant("b");
-        b.setName("Renault");
+        b.setNom("Renault");
         Etudiant c = new Etudiant("c");
-        c.setName("Pierre");
+        c.setNom("Pierre");
         Etudiant d = new Etudiant("d");
-        d.setName("Francois");
+        d.setNom("Francois");
         Etudiant e = new Etudiant("e");
-        e.setName("Alexandre");
+        e.setNom("Alexandre");
         Etudiant f = new Etudiant("f");
-        f.setName("Tristan");
+        f.setNom("Tristan");
         Etudiant g = new Etudiant("g");
-        g.setName("Roger");
+        g.setNom("Roger");
 
         lesEtudiants.add(a);
         lesEtudiants.add(b);
@@ -70,7 +70,21 @@ public class PlaceService {
         local.assignePlaces(A20);
         return local.toResultPlaces();
     }
+    @GET
+    @Path("groupe")
+    public String getGroupe() {
 
+
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("http://zeus.gel.usherbrooke.ca:8080/ms/rest/trimestre?inscription=2017-01-01");
+        Invocation.Builder  builder = target.request(MediaType.APPLICATION_JSON);
+        Response response = builder.get();
+
+        List<Etudiant> ListEtudiants = response.readEntity(new GenericType<List<Etudiant>>(){});
+
+        return "yes";
+
+    }
 
 /*
    @Produces("text/plain")

@@ -53,37 +53,43 @@ export const config = new class Config {
                             borderless: true,
                             scroll: false,
                             elements: [
-                                {
-                                    view: "text",
-                                    id: "groupe",
-                                    name: "groupe",
-                                    label: "Groupe choisi",
-                                    labelWidth: 280,
-                                    inputWidth: 375,
-                                },
 
                                 {
-                                    view: "text",
+                                    view:"combo",
                                     id: "local",
                                     name: "local",
                                     label: "numero du local",
                                     labelWidth: 280,
                                     inputWidth: 500,
+                                    value:"C1-5001", // the initially selected one
+                                    options:[
+                                        { "id":"C1-5001", "value":"C1-5001"},
+                                        { "id":"C1-5006", "value":"C1-5006"},
+                                        { "id":"C1-4008", "value":"C1-4008"},
+                                        { "id":"C1-3007", "value":"C1-3007"},
+                                        { "id":"C1-4023", "value":"C1-4023"},
+                                        { "id":"vide", "value":"Local non-existant"}
+                                    ]
                                 },
 
                                 {
-                                    view: "text",
+                                    view: "combo",
                                     id: "disposition",
                                     name: "disposition",
-                                    label: "Type de disposition (covid,2m ou mixte)",
+                                    label: "Type de disposition",
                                     labelWidth: 280,
                                     inputWidth: 500,
+                                    value:1, // the initially selected one
+                                    options:[
+                                        { "id":1, "value":"Distance de 1 place"},
+                                        { "id":2, "value":"Distance de 2 place"}
+                                    ]
                                 },
                                 {
                                     view: "text",
                                     id: "etudiants",
-                                    name: "etudiants",
-                                    label: "Liste d'etudiant a placer",
+                                    name: "etudiants (a;b;c)",
+                                    label: "Liste d'etudiant a placer (a;b;c)",
                                     labelWidth: 280,
                                     inputWidth: 500,
                                 },
@@ -143,11 +149,11 @@ export const config = new class Config {
                                             click: () => {
                                                 const requestInfo = {
                                                     local: $$("local").getValue(),
-                                                    groupe: $$("groupe").getValue(),
                                                    // batimentID: $$("id_batiment").getValue(),
                                                    // date: $$("date").getValue(),
                                                     dispostion: $$("disposition").getValue(),
                                                     lesEtudiants: $$("etudiants").getValue(),
+
                                                    // heure_debut: $$("heure_debut").getValue(),
                                                    // heure_fin: $$("heure_fin").getValue(),
                                             };

@@ -32,11 +32,16 @@ public class PlaceService {
     @Produces("application/json")
     public List<ResultPlace> getLocal(@QueryParam("localid") String localId, @QueryParam("etudiants") String etudiants, @QueryParam("disposition") int dis) {
         List<Place> lesPlaces =placeMapper.selectLocal(localId);
+        Local local = new Local(localId);
+        if(lesPlaces.isEmpty()){
+            return local.toResultError("Local does not exist");
+        }
+
         for(int i=0;i<lesPlaces.size();i++){
             List<Place> placesTest= placeMapper.selectPlacesProches(localId, lesPlaces.get(i).getPlaceNumber(), dis);
             lesPlaces.get(i).setPlacesProches(placesTest);
         }
-        Local local = new Local(localId);
+
         local.setLesPlaces(lesPlaces);
         //------------------------------------------------------------------------------
         Groupe leGroupe = new Groupe();
@@ -50,7 +55,10 @@ public class PlaceService {
 
         leGroupe.setLesEtudiants(lesEtudiants);
         //------------------------------------------------------------------------------
-        local.assignePlaces(leGroupe);
+        ;
+        if(local.assignePlaces(leGroupe) == false){
+            return local.toResultError("Le local est trop petit");
+        }
         return local.toResultPlaces();
     }
     @GET

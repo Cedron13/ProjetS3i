@@ -36,6 +36,11 @@ public class Local {
         }
         return formatPlaces;
     }
+    public List<ResultPlace> toResultError(String s){
+        List<ResultPlace> errorPlaces = new ArrayList<ResultPlace>();
+        errorPlaces.add(new ResultPlace(1, s, ""));
+        return errorPlaces;
+    }
 
     public boolean assignePlaces(Groupe groupe){
 

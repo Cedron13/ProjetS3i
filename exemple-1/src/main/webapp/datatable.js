@@ -20,13 +20,7 @@ export const datatable = new class Datatable {
             tooltip: "Place Id",
             hidden: false,
         },
-        {
-            id: "etudiantname",
-            header: "Nom des étudiants",
-            hidden: false,
-            width: 200,
-            fillspace: true,
-        },
+
         {
             id: "cip",
             header: "CIP",
@@ -44,7 +38,6 @@ export const datatable = new class Datatable {
             .then(data => {
                 console.log(data);
                 $$(datatable.id).clearAll();
-                $$(datatable.id).parse(data);
                 $$("main").hideProgress();
 
             })

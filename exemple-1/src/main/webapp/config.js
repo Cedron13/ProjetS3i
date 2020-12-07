@@ -64,7 +64,7 @@ export const config = new class Config {
                                     value:"C1-5001", // the initially selected one
                                     options:[
                                         { "id":"C1-5001", "value":"C1-5001"},
-                                        { "id":"C1-5006", "value":"C1-5006"},
+                                        { "id":"C1-5006", "value":"C1-5    6"},
                                         { "id":"C1-4008", "value":"C1-4008"},
                                         { "id":"C1-3007", "value":"C1-3007"},
                                         { "id":"C1-4023", "value":"C1-4023"},
